@@ -61,7 +61,7 @@ This is a _super_ powerful idea that makes it much easier for us to build progra
 
 ## Functions as Arguments
 
-When a language allows functions to be used as arguments, we say that the language treats functions as **first-class objects**. Oftentimes, these functions server as **callbacks**, which do just what their name implies: they are _called back_, potentially with arguments, and do their work on bits of data that weren't available outside of the function.
+When a language allows functions to be used as arguments, we say that the language treats functions as **first-class objects**. Oftentimes, these functions serve as **callbacks**, which do just what their name implies: they are _called back_, potentially with arguments, and do their work on bits of data that weren't available outside of the function.
 
 For example, let's say that we have a function for logging the square of a number called, appropriately enough, `square`.
 
@@ -114,3 +114,5 @@ If you've been following along in `index.js`, you should now be able to run `lea
 ## Resources
 
 - [`Array.prototype.forEach()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach)
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/introduction-to-array-for-each'>Array.forEach</a> on Learn.co and start learning to code for free.</p>
