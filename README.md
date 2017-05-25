@@ -13,7 +13,7 @@ Up until now, we've been doing our iterating with `for` loops. These are great f
 ``` javascript
 var evens = [0, 2, 4, 6, 8, 10]
 
-for (var i = 0, l = evens.length; i < l; i++) {
+for (var i = 0; i < evens.length; i++) {
   console.log(`${evens[i]} is not odd!`)
 }
 ```
