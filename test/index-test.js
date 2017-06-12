@@ -1,45 +1,49 @@
-const chai = require('chai')
-const fs = require('fs')
-const jsdom = require('mocha-jsdom')
-const path = require('path')
-const spies = require('chai-spies')
+const chai = require('chai');
+const fs = require('fs');
+const jsdom = require('mocha-jsdom');
+const path = require('path');
+const spies = require('chai-spies');
 
-chai.use(spies)
+chai.use(spies);
 
-const expect = chai.expect
+const expect = chai.expect;
 
 
-describe('index', () => {
+describe('index.js', () => {
   jsdom({
     src: fs.readFileSync(path.resolve(__dirname, '..', 'index.js'), 'utf-8')
-  })
+  });
 
-  describe('changeCompletely(element, index, array)', () => {
+  describe('doToElementsInArray()', () => {
     it('is defined', () => {
-      expect(changeCompletely).to.be.a('function')
-    })
+      expect(doToElementsInArray).to.be.a('function');
+    });
 
-    it('completely alters an array in place when used with Array.prototype.forEach', () => {
-      const array = [1, 2, 3]
+    it('invokes the passed-in callback function on every element of the passed-in array using Array.prototype.forEach()', () => {
+      const callback = fruit => `Mmmm, ${fruit}!!!`;
+      // const callback = chai.spy();
+      const array = ["apple", "banana", "cherry"];
+      const forEach = chai.spy.on(array, 'forEach');
 
-      expect(array.forEach(changeCompletely)).not.to.eql([1, 2, 3])
-    })
-  })
+      doToElementsInArray(array, callback);
 
-  describe('doToElementsInArray(array, callback)', () => {
+      expect(forEach).to.have.been.called.with(callback);
+    });
+  });
+
+  describe('changeCompletely()', () => {
     it('is defined', () => {
-      expect(doToElementsInArray).to.be.a('function')
-    })
+      expect(changeCompletely).to.be.a('function');
+    });
 
-    it('performs `callback` on `array` using `Array.prototype.forEach`', () => {
-      const callback = chai.spy()
-      const array = [1, 2, 3]
-      const forEach = chai.spy.on(array, 'forEach')
+    it('alters every element in an array when used in conjunction with Array.prototype.forEach()', () => {
+      const array = ["antelope", "bear", "cat"];
 
-      doToElementsInArray(array, callback)
+      array.forEach(changeCompletely);
 
-      expect(callback).to.have.been.called
-      expect(forEach).to.have.been.called
-    })
-  })
-})
+      expect(array[0]).not.to.eql("antelope");
+      expect(array[1]).not.to.eql("bear");
+      expect(array[2]).not.to.eql("cat");
+    });
+  });
+});
