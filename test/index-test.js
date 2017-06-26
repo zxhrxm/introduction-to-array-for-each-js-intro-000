@@ -1,13 +1,12 @@
-const chai = require('chai');
 const fs = require('fs');
-const jsdom = require('mocha-jsdom');
 const path = require('path');
-const spies = require('chai-spies');
 
-chai.use(spies);
+const jsdom = require('mocha-jsdom');
 
+const chai = require('chai');
 const expect = chai.expect;
-
+const spies = require('chai-spies');
+chai.use(spies);
 
 describe('index.js', () => {
   jsdom({
@@ -20,7 +19,10 @@ describe('index.js', () => {
     });
 
     it('invokes the passed-in callback function on every element of the passed-in array using Array.prototype.forEach()', () => {
-      const callback = fruit => `Mmmm, ${fruit}!!!`;
+      const callback = function(fruit) {
+        return `Mmmm, ${fruit}!!!`;
+      };
+
       const array = ["apple", "banana", "cherry"];
       const forEach = chai.spy.on(array, 'forEach');
 
