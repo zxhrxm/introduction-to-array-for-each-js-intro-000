@@ -85,20 +85,7 @@ for (let i = 0; i < evens.length; i++) {
 }
 ```
 
-...but that seems like too many extra lines for such a simple operation. We could also use an IIFE, an immediately-invoked function expression, to make our code a bit more compact, but it's starting to get far more confusing than the elegant simplicity of a `.forEach()`:
-
-```js
-var evens = [0, 2, 4, 6, 8, 10];
-
-for (let i = 0; i < evens.length; i++) {
-  (function (even, index, array) {
-  debugger;
-    console.log(`${even} is not odd!`);
-  })(evens[i], i, evens);
-}
-```
-
-`.forEach()` provides a wonderfully compact, readable syntax for invoking a function on every member of an array. It's a powerful tool that makes it easier for us to perform complex array operations in just a few lines of code.
+...but that seems like too many extra lines for such a simple operation. `.forEach()` provides a wonderfully compact, readable syntax for invoking a function on every member of an array. It's a powerful tool that makes it easier for us to perform complex operations in just a few lines of code.
 
 ## Functions as Arguments
 Functions in JavaScript are **first-class objects**, and one of the best perks of that special status is that we can pass functions as arguments to other functions. Oftentimes, these passed-in functions serve as **callbacks**, which do just what the name implies: they are _called back_, potentially with arguments, and do their work on data that weren't available at runtime.
@@ -114,7 +101,6 @@ function square(n) {
 If we just wanted to square all of the elements in `evens`, we could write `evens.forEach(square)`.
 
 But what if we don't know ahead of time what we want to do to the elements in our `evens` array? We can make our little program even more generic by wrapping it all up in a function that accepts another function (a callback) as an argument:
-
 ```js
 var evens = [0, 2, 4, 6, 8, 10];
 
@@ -126,7 +112,6 @@ function doToEvens(callback) {
 Now we can pass _any_ function to `doToEvens` and that function will be invoked on every element of the `evens` array!
 
 Let's take it a step farther — what if we don't know beforehand which array we're going to be operating on? We can define a function that accepts two arguments: an array and a callback function to pass to `.forEach()`:
-
 ```js
 function doToElementsInArray(array, callback) {
   array.forEach(callback);

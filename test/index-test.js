@@ -21,7 +21,6 @@ describe('index.js', () => {
 
     it('invokes the passed-in callback function on every element of the passed-in array using Array.prototype.forEach()', () => {
       const callback = fruit => `Mmmm, ${fruit}!!!`;
-      // const callback = chai.spy();
       const array = ["apple", "banana", "cherry"];
       const forEach = chai.spy.on(array, 'forEach');
 
