@@ -88,10 +88,11 @@ for (let i = 0; i < evens.length; i++) {
 ...but that seems like too many extra lines for such a simple operation. `.forEach()` provides a wonderfully compact, readable syntax for invoking a function on every member of an array. It's a powerful tool that makes it easier for us to perform complex operations in just a few lines of code.
 
 ## Functions as Arguments
-Functions in JavaScript are **first-class objects**, and one of the best perks of that special status is that we can pass functions as arguments to other functions. Oftentimes, these passed-in functions serve as **callbacks**, which do just what the name implies: they are _called back_, potentially with arguments, and do their work on data that weren't available at runtime.
+Functions in JavaScript are **first-class objects**, which means we can treat them just as we would numbers, strings, arrays, and other JavaScript objects. Functions "[can be stored in variables, passed as arguments to functions, created within functions and returned from functions](http://wiki.c2.com/?FirstClass)." Often, we will pass a function as an argument to another function so that it can serve as a **callback**, a very powerful concept in functional programming. Essentially, the main function (`mainFn()`) that receives the callback function (`callbackFn()`) as an argument will invoke the passed-in `callbackFn()` at some later point, perhaps waiting until other processes have completed or until data that the `callbackFn()` relies upon becomes available.
+
+Callbacks are a very important concept that you'll employ throughout your JavaScript career. The basic idea is that we define a function but delegate control of _when_ it should be invoked to another function.
 
 For example, take the following function, `square()`, which multiplies the passed-in number by itself and logs out the result:
-
 ```js
 function square(n) {
   console.log(n * n)
